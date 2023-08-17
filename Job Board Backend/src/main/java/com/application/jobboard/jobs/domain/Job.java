@@ -25,12 +25,12 @@ public class Job {
 
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "companyId")
     @JsonBackReference(value = "company-job")
     private Company company;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "applicant_id")
+    @JoinColumn(name = "applicantId")
     @JsonBackReference(value = "applicant-job")
     private List<Applicant> applicants;
 

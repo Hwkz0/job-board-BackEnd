@@ -1,6 +1,7 @@
 package com.application.jobboard.companies.domain;
 
 
+import com.application.jobboard.employees.domain.Employee;
 import com.application.jobboard.jobs.domain.Job;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -23,10 +24,21 @@ public class Company {
     private String companyPhoneNumber;
 
 
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 
     @OneToMany(mappedBy = "company",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonManagedReference(value = "company-job")
     private List<Job> jobs;
+
+    @OneToMany(mappedBy = "company",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "company-employee")
+    private List<Employee> employees;
 
     public Company() {
 
@@ -86,4 +98,11 @@ public class Company {
         this.companyPhoneNumber = companyPhoneNumber;
     }
 
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
 }

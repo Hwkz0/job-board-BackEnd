@@ -1,9 +1,10 @@
 package com.application.jobboard.applicants.domain;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.application.jobboard.jobs.domain.Job;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 
 @Entity
@@ -24,6 +25,9 @@ public class Applicant {
     private String applicantPhoneNumber;
 
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "applicantId")
+    private List<Job> jobs;
 
     public Applicant() {
 
@@ -109,6 +113,14 @@ public class Applicant {
     public String getApplicantPhoneNumber() {
 
         return applicantPhoneNumber;
+    }
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
     }
 
     public void setApplicantPhoneNumber(String applicantPhoneNumber) {
