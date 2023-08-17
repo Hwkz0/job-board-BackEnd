@@ -1,9 +1,11 @@
 package com.application.jobboard.companies.domain;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.application.jobboard.jobs.domain.Job;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Company {
@@ -19,6 +21,30 @@ public class Company {
     private String companyPassword;
 
     private String companyPhoneNumber;
+
+
+
+    @OneToMany(mappedBy = "company",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "company-job")
+    private List<Job> jobs;
+
+    public Company() {
+
+    }
+
+    public Company(Long companyId, String companyName, String companyEmailAddress, String companyPassword, String companyPhoneNumber) {
+
+        this.companyId = companyId;
+
+        this.companyName = companyName;
+
+        this.companyEmailAddress = companyEmailAddress;
+
+        this.companyPassword = companyPassword;
+
+        this.companyPhoneNumber = companyPhoneNumber;
+
+    }
 
     public long getCompanyId() {
         return companyId;
@@ -59,4 +85,5 @@ public class Company {
     public void setCompanyPhoneNumber(String companyPhoneNumber) {
         this.companyPhoneNumber = companyPhoneNumber;
     }
+
 }

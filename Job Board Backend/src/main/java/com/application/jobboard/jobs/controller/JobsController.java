@@ -2,9 +2,8 @@ package com.application.jobboard.jobs.controller;
 
 
 import com.application.jobboard.auth.exception.EntityNotFoundException;
-import com.application.jobboard.jobs.domain.Jobs;
+import com.application.jobboard.jobs.domain.Job;
 import com.application.jobboard.jobs.repository.JobsRepository;
-import jakarta.persistence.GeneratedValue;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +20,14 @@ public class JobsController {
 
 
     @PostMapping("/job/register")
-    Jobs newJob(@RequestBody Jobs registerJob) {
+    Job newJob(@RequestBody Job registerJob) {
 
         return jobsRepository.save(registerJob);
 
     }
 
     @GetMapping("/job/all-jobs")
-    List<Jobs> getAllJobs() {
+    List<Job> getAllJobs() {
 
         return jobsRepository.findAll();
 
@@ -36,7 +35,7 @@ public class JobsController {
 
 
     @GetMapping("/job/{getJobById}")
-    Jobs getJobById(Long getJobById) {
+    Job getJobById(Long getJobById) {
 
         return jobsRepository.findById(getJobById)
                 .orElseThrow(() -> new EntityNotFoundException(getJobById, entityType));
@@ -46,20 +45,20 @@ public class JobsController {
 
 
     @PutMapping("/job/update/{idOfJobToBeUpdated}")
-    Jobs updateJobs(@RequestBody Jobs updateJobs, @PathVariable Long idOfJobToBeUpdated) {
+    Job updateJobs(@RequestBody Job updateJob, @PathVariable Long idOfJobToBeUpdated) {
 
         return jobsRepository.findById(idOfJobToBeUpdated)
                 .map(job -> {
 
-                    job.setJobTitle(updateJobs.getJobTitle());
+                    job.setJobTitle(updateJob.getJobTitle());
 
 //                    job.setJobDescription(updateJobs.getJobDescription());
 
-                    job.setJobLocation(updateJobs.getJobLocation());
+                    job.setJobLocation(updateJob.getJobLocation());
 
-                    job.setJobType(updateJobs.getJobType());
+                    job.setJobType(updateJob.getJobType());
 
-                    job.setJobSalary(updateJobs.getJobSalary());
+                    job.setJobSalary(updateJob.getJobSalary());
 //
 //                    job.setJobRequiredExperience(updateJobs.getJobRequiredExperience());
 //
