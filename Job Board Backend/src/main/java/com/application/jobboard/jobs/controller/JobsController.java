@@ -59,6 +59,8 @@ public class JobsController {
                     job.setJobType(updateJob.getJobType());
 
                     job.setJobSalary(updateJob.getJobSalary());
+
+                    //TO BE IMPLEMENTED LATER RIGHT NOW JUST NOTING SO I DON T FORGET WHAT I WAS PLANNING HERE
 //
 //                    job.setJobRequiredExperience(updateJobs.getJobRequiredExperience());
 //
