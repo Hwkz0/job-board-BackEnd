@@ -4,10 +4,25 @@ import com.application.jobboard.applicants.domain.Applicant;
 
 public class ApplicantDto {
 
-    Applicant applicant;
-    String jobId;
+    /*
+        * The ApplicantDto is used to transfer data between different layers of the application.
+     */
 
-    public ApplicantDto(Applicant applicant, String jobId) {
+    private Applicant applicant;
+
+    private Long jobId;
+
+
+    /*
+        * The ApplicantDto constructor is used to create an instance of the ApplicantDto class.
+        * This creates an instance of the Applicant class with the jobId variable.
+     */
+
+    public ApplicantDto() {
+
+    }
+
+    public ApplicantDto(Applicant applicant, Long jobId) {
         this.applicant = applicant;
         this.jobId = jobId;
     }
@@ -20,11 +35,11 @@ public class ApplicantDto {
         this.applicant = applicant;
     }
 
-    public String getJobId() {
+    public Long getJobId() {
         return jobId;
     }
 
-    public void setJobId(String jobId) {
+    public void setJobId(Long jobId) {
         this.jobId = jobId;
     }
 

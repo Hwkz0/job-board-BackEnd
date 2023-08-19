@@ -10,16 +10,15 @@ import jakarta.persistence.*;
 public class Candidate {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long candidateId;
 
     @ManyToOne
-    @JoinColumn(name = "candidateId")
+    @JoinColumn(name = "applicant_id")
     private Applicant applicant;
 
-
     @ManyToOne
-    @JoinColumn(name = "jobId")
+    @JoinColumn(name = "job_id")
     private Job job;
 
     private String candidateStatus;

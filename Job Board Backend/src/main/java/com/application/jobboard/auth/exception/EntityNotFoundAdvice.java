@@ -13,13 +13,21 @@ import java.util.Map;
 @ControllerAdvice
 public class EntityNotFoundAdvice {
 
+
+    /*
+        * The entityNotFoundHandler method is used to handle the EntityNotFoundException.
+        * This is done by using the @ExceptionHandler annotation.
+        * The @ResponseBody annotation is used to bind the return value to the body of the response.
+     */
+
+
     @ResponseBody
 
     @ExceptionHandler(EntityNotFoundException.class)
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
 
-    public Map<String, String> userNotFoundHandler(EntityNotFoundException exception) {
+    public Map<String, String> entityNotFoundHandler(EntityNotFoundException exception) {
 
         Map<String,String> erorMap = new HashMap<>();
 
