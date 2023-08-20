@@ -4,34 +4,45 @@ package com.application.jobboard.jobs.domain;
 import com.application.jobboard.applicants.domain.Applicant;
 import com.application.jobboard.companies.domain.Company;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@Table(name = "jobs")
 public class Job {
 
     @Id
     @GeneratedValue
     private long jobId;
 
+    @Column(name = "job_title")
     private String jobTitle;
 
+    @Column(name = "job_location")
     private String jobLocation;
 
+    @Column(name = "job_type")
     private String jobType;
 
+    @Column(name = "job_salary")
     private String jobSalary;
 
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "companyId")
+    @JoinColumn(name = "company_id")
     @JsonBackReference(value = "company-job")
     private Company company;
 
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "employee_id")
+    @JsonBackReference(value = "employee-job")
+    private Company employee;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "applicantId")
-    @JsonBackReference(value = "applicant-job")
+    @JoinColumn(name = "applicant_id")
+    @JsonManagedReference(value = "applicant-job")
     private List<Applicant> applicants;
 
 

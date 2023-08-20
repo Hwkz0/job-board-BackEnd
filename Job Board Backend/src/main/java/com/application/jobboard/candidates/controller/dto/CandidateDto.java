@@ -8,33 +8,17 @@ public class CandidateDto {
 
     private Candidate candidate;
     private long jobId;
-    private Company company;
-    private long companyId;
 
 
     public CandidateDto() {
 
     }
 
-
     public CandidateDto(Candidate candidate, long jobId){
         this.candidate = candidate;
         this.jobId = jobId;
     }
 
-    public CandidateDto(Candidate candidate, long jobId, Company company){
-        this.candidate = candidate;
-        this.jobId = jobId;
-        this.company = company;
-    }
-
-
-    public CandidateDto(Candidate candidate, Company company, long companyId, long jobId){
-        this.candidate = candidate;
-        this.company = company;
-        this.companyId = companyId;
-        this.jobId = jobId;
-    }
 
     public Candidate getCandidate() {
         return candidate;
@@ -52,19 +36,4 @@ public class CandidateDto {
         this.jobId = jobId;
     }
 
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(long companyId) {
-        this.companyId = companyId;
-    }
 }

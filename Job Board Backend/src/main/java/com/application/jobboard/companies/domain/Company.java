@@ -11,18 +11,23 @@ import java.util.List;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "companies")
 public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long companyId;
 
+    @Column(name = "company_name")
     private String companyName;
 
+    @Column(name = "company_email_address")
     private String companyEmailAddress;
 
+    @Column(name = "company_password")
     private String companyPassword;
 
+    @Column(name = "company_phone_number")
     private String companyPhoneNumber;
 
 
@@ -38,9 +43,7 @@ public class Company {
 
     }
 
-    public Company(Long companyId, String companyName, String companyEmailAddress, String companyPassword, String companyPhoneNumber) {
-
-        this.companyId = companyId;
+    public Company(String companyName, String companyEmailAddress, String companyPassword, String companyPhoneNumber) {
 
         this.companyName = companyName;
 

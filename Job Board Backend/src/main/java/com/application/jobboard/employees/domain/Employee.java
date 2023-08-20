@@ -1,45 +1,62 @@
 package com.application.jobboard.employees.domain;
 
 import com.application.jobboard.companies.domain.Company;
+import com.application.jobboard.jobs.domain.Job;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
+@Table(name = "employees")
 public class Employee {
-
-
 
     @Id
     @GeneratedValue
     private long employeeId;
 
+    @Column(name = "employee_first_name")
     private String employeeFirstName;
 
+    @Column(name = "employee_last_name")
     private String employeeLastName;
 
+    @Column(name = "employee_email_address")
     private String employeeEmailAddress;
 
+    @Column(name = "employee_password")
     private String employeePassword;
 
+    @Column(name = "employee_phone_number")
     private String employeePhoneNumber;
 
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "companyId")
+    @JoinColumn(name = "company_id")
     @JsonBackReference(value = "company-employee")
     private Company company;
-    private Long companyId;
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Column(name = "job_id")
+    @JsonBackReference(value = "employee-job")
+    private List<Job> jobs;
 
 
     protected Employee() {
     }
 
-    public Employee(Long employeeId, String employeeFirstName, String employeeLastName, String employeeEmailAddress, String employeePassword, String employeePhoneNumber) {
-        this.employeeId = employeeId;
+    public Employee(String employeeFirstName, String employeeLastName, String employeeEmailAddress, String employeePassword, String employeePhoneNumber) {
+
         this.employeeFirstName = employeeFirstName;
+
         this.employeeLastName = employeeLastName;
+
         this.employeeEmailAddress = employeeEmailAddress;
+
         this.employeePassword = employeePassword;
+
         this.employeePhoneNumber = employeePhoneNumber;
+
     }
 
     public long getEmployeeId() {
@@ -98,11 +115,4 @@ public class Employee {
         this.company = company;
     }
 
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
-    }
 }

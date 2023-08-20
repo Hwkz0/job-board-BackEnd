@@ -2,6 +2,7 @@ package com.application.jobboard.applicants.domain;
 
 
 import com.application.jobboard.jobs.domain.Job;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -65,8 +66,8 @@ public class Applicant {
     @JoinTable(
             name = "applicants_jobs",
             joinColumns = @JoinColumn(name = "applicant_id"),
-            inverseJoinColumns = @JoinColumn(name = "job_id")
-    )
+            inverseJoinColumns = @JoinColumn(name = "job_id"))
+    @JsonBackReference(value = "applicant-job")
     private List<Job> jobs;
 
 

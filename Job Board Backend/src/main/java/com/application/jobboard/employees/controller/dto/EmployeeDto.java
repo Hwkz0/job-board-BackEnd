@@ -7,22 +7,31 @@ public class EmployeeDto {
 
     private Employee employee;
     private Long companyId;
-    private Company company;
+    private Long jobId;
+
 
     public EmployeeDto () {
 
     }
 
-    public EmployeeDto(Employee employee) {
-        this.employee = employee;
-    }
-
-    public EmployeeDto(Employee employee, Long companyId, Company company) {
+    public EmployeeDto(Employee employee, Long companyId) {
         this.employee = employee;
         this.companyId = companyId;
-        this.company = company;
     }
 
+    public EmployeeDto(Employee employee, Long companyId, Long jobId) {
+        this.employee = employee;
+        this.companyId = companyId;
+        this.jobId = jobId;
+    }
+
+    public Long getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(Long jobId) {
+        this.jobId = jobId;
+    }
 
     public Employee getEmployee() {
         return employee;
@@ -40,11 +49,4 @@ public class EmployeeDto {
         this.companyId = companyId;
     }
 
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
 }

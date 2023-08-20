@@ -15,6 +15,13 @@ import java.util.List;
 public class ApplicantController {
 
 
+    // TO DO : MANAGE APPLICANT-JOB-CANDIDATE RELATIONSHIP OFFERING POSSIBILITY FOR APPLICANT TO MANAGE THEIR CANDIDATURE STATUS
+    // ALSO REFACTOR APPLICANT CONTROLLER TO USE APPLICANT SERVICES WHICH WILL BE IMPLEMENTED IN THE FUTURE
+
+
+
+
+
     /*
         * The entityType variable is used to store the name of the entity type that is being used in the controller.
         * This is used in the EntityNotFoundException class.
