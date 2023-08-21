@@ -13,6 +13,7 @@ public class Candidate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "candidate_id")
     private Long candidateId;
 
     @Column(name = "candidate_status")

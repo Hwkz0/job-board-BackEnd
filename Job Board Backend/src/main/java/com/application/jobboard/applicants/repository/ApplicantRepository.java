@@ -15,7 +15,7 @@ public interface ApplicantRepository extends JpaRepository<Applicant, Long> {
         * The methods in this interface are implemented by the JpaRepository interface.
      */
 
-    Optional<Applicant> findByEmailAddress(String applicantEmailAddress);
+
 
 
 }

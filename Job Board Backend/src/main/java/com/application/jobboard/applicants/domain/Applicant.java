@@ -26,6 +26,7 @@ public class Applicant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "applicant_id")
     private long applicantId;
 
 

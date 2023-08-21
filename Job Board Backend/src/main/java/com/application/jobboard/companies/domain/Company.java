@@ -16,6 +16,7 @@ public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "company_id")
     private long companyId;
 
     @Column(name = "company_name")
@@ -31,11 +32,11 @@ public class Company {
     private String companyPhoneNumber;
 
 
-    @OneToMany(mappedBy = "company",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonManagedReference(value = "company-job")
     private List<Job> jobs;
 
-    @OneToMany(mappedBy = "company",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonManagedReference(value = "company-employee")
     private List<Employee> employees;
 

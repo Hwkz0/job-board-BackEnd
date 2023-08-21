@@ -15,6 +15,7 @@ public class Job {
 
     @Id
     @GeneratedValue
+    @Column(name = "job_id")
     private long jobId;
 
     @Column(name = "job_title")
@@ -37,7 +38,7 @@ public class Job {
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_id")
-    @JsonBackReference(value = "employee-job")
+    @JsonManagedReference(value = "employee-job")
     private Company employee;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

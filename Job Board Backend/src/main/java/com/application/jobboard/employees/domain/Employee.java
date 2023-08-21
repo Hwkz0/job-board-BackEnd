@@ -12,7 +12,8 @@ import java.util.List;
 public class Employee {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employee_id")
     private long employeeId;
 
     @Column(name = "employee_first_name")
@@ -36,8 +37,7 @@ public class Employee {
     @JsonBackReference(value = "company-employee")
     private Company company;
 
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @Column(name = "job_id")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference(value = "employee-job")
     private List<Job> jobs;
 
