@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/job-board/candidates")
 public class CandidateController {
 
     private final String entityType = "Candidate";

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/job-board/companies")
 public class CompanyController {
 
     private final String entityType = "Company";

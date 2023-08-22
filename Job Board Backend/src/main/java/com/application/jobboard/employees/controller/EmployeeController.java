@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/job-board/employees")
 public class EmployeeController {
 
     private final String entityType="Employee";

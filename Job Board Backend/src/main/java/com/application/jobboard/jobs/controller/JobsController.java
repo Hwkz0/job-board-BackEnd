@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/job-board/jobs")
 public class JobsController {
 
     private final String entityType = "Job";
