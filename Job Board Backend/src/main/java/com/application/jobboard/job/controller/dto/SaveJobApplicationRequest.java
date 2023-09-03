@@ -14,6 +14,7 @@ public class SaveJobApplicationRequest {
 
     @Builder
     public SaveJobApplicationRequest(long jobId) {
+
         this.jobId = jobId;
     }
 }

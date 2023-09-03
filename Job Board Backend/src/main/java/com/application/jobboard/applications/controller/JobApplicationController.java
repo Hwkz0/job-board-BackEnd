@@ -12,11 +12,29 @@ import com.application.jobboard.applications.service.JobApplicationService;
 import com.application.jobboard.global.common.StatusEnum;
 import com.application.jobboard.global.common.SuccessResponse;
 import com.application.jobboard.job.controller.dto.SaveJobApplicationRequest;
+import com.application.jobboard.user.service.LoginService;
 
-
-//TODO: COME BACK TO THIS
-
-
-
+@RestController
 public class JobApplicationController {
+
+    private final JobApplicationService jobApplicationService;
+    private final LoginService loginService;
+
+    public JobApplicationController(JobApplicationService jobApplicationService, @Qualifier("userSessionLoginService") LoginService loginService){
+        this.jobApplicationService = jobApplicationService;
+        this.loginService = loginService;
+    }
+
+    @AuthRequired
+    @PostMapping("/job-application")
+    public SuccessResponse saveJobApplication(@Valid @RequestBody final SaveJobApplicationRequest dto){
+        long userId = loginService.getCurrentUserId();
+        jobApplicationService.saveJobApplication(userId, dto);
+        return SuccessResponse.builder()
+                .status(StatusEnum.OK)
+                .message("Job application saved successfully")
+                .build();
+    }
+
+
 }
