@@ -28,7 +28,7 @@ public class JobApplicationController {
     @AuthRequired
     @PostMapping("/job-application")
     public SuccessResponse saveJobApplication(@Valid @RequestBody final SaveJobApplicationRequest dto){
-        long userId = loginService.getCurrentUserId();
+        long userId = loginService.getLoginUserId();
         jobApplicationService.saveJobApplication(userId, dto);
         return SuccessResponse.builder()
                 .status(StatusEnum.OK)
