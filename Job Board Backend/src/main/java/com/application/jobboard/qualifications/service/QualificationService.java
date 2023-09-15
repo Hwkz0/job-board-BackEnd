@@ -3,7 +3,6 @@ package com.application.jobboard.qualifications.service;
 import com.application.jobboard.qualifications.domain.Qualification;
 import com.application.jobboard.qualifications.domain.UserQualification;
 import com.application.jobboard.qualifications.repository.QualificationRepository;
-import com.application.jobboard.applications.domain.JobApplication;
 
 
 import jakarta.transaction.Transactional;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.time.ZonedDateTime;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
